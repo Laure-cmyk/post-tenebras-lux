@@ -1,19 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StoryController;
+use App\Http\Controllers\ChapterApiController;
+use App\Http\Controllers\ChoiceApiController;
+
 
 Route::prefix('api/v1/')->group(function () {
-  Route::get('/test', function () {
-    return response()->json(['message' => 'Hello, World from api!']);
-  });
+  Route::get('/story', [StoryController::class, 'show']);
+    Route::put('/story', [StoryController::class, 'update']);
+    Route::delete('/story', [StoryController::class, 'destroy']);
+    Route::post('/story', [StoryController::class, 'store']);
 
-  Route::delete('/test', function () {
-    return response()->json(['message' => 'Deleting']);
-  });
-
-  Route::post('/time', function () {
-    $timeClient = request()->input('timeClient', 0);
-    sleep(2); // Simulate a long-running process
-    return response()->json(['timeClient' => $timeClient, 'timeServer' => now()]);
-  });
+    Route::apiResource('story/chapters', ChapterApiController::class);
+    
+    Route::apiResource('chapters.choices', ChoiceApiController::class);
 });
