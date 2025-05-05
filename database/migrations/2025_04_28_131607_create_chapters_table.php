@@ -15,8 +15,9 @@ return new class extends Migration {
             $table->timestamps();
             $table->string('title');
             $table->integer('chapter_number')->nullable();
-            $table->text('content');
-            $table->blob('image')->nullable();
+            $table->text('chapter_content');
+            $table->string('image_path')->nullable();
+            $table->string('audio_path')->nullable();
             $table->foreignId('story_id')
             ->references('id')
             ->on('stories')

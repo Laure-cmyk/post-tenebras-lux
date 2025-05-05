@@ -7,11 +7,19 @@ use App\Models\Story;
 
 class StoryApiController extends Controller
 {
+
+    public function show()
+    {
+        // implement use
+        /* return response()->json(Story::all()); */
+        return Story::first();
+    }
     public function getStories()
     {
         // implement use
         return response()->json(Story::all());
     }
+
 
     public function getStory($id)
     {

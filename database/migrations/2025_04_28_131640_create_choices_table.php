@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('choices', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('text');
+            $table->string('choice_content');
             $table->foreignId('chapter_id')->references('chapters')
             ->onDelete('restrict')
             ->onUpdate('restrict');
