@@ -1,22 +1,27 @@
 <script setup>
-import { ref } from 'vue'
-  //may need to add a watcher
-import { useFetchJson } from '@/composables/useFetchJson'
+import { ref } from "vue";
+//may need to add a watcher
+import { useFetchJson } from "@/composables/useFetchJson";
 
 const handleClick = () => {
-  console.log('Button clicked!');
+    console.log("Button clicked!");
 };
-//to call the api
-/* const { data: test } = useFetchJson('test') */
+
+const { data: story } = useFetchJson("story");
 </script>
 
 <template>
-  <button>Hello</button>
-  <button>Bye</button>
-  <button @click="handleClick">Click Me</button>
+    <div class="flex flex-center column q-pa-md full-height">
+        <h1 class="text-h2 text-weight-bold q-mb-md text-center">
+            {{ story.title }}
+        </h1>
+        <h2 class="text-h4 q-mb-lg text-center">{{ story.summary }}</h2>
+        <q-btn label="Get Started" @click="handleClick" size="lg" unelevated />
+    </div>
 </template>
 
-
 <style scoped>
-  
+.full-height {
+    min-height: calc(100vh - 50px);
+}
 </style>

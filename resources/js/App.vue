@@ -1,15 +1,15 @@
 <script setup>
   import { ref } from 'vue';
-  import TheHeader from '@/components/TheHeader.vue';
   import PageLanding from './pages/PageLanding.vue';
+  import TheFooter from '@/components/TheFooter.vue';
 </script>
 
 <template>
   <div>
-    <TheHeader />
     <main>
       <PageLanding />
     </main>
+    <TheFooter />
   </div>
 </template>
 
