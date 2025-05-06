@@ -2,12 +2,14 @@
   import { ref } from 'vue';
   import PageLanding from './pages/PageLanding.vue';
   import TheFooter from '@/components/TheFooter.vue';
+  import { currentPage } from '../stores/routes';
 </script>
 
 <template>
   <div class="app-container">
     <main>
-      <PageLanding />
+      <component :is="currentPage" />
+     <!--  <PageLanding /> -->
     </main>
     <TheFooter />
   </div>
