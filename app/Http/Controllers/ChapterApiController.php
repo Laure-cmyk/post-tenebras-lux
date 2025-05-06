@@ -15,6 +15,12 @@ class ChapterApiController extends Controller
    
 
     public function getChapter($id) {
-        /* return response()->json(ChapterController::findOrFail($id)); */
+       
+        $chapter = Chapter::find($id);
+        if ($chapter) {
+            return response()->json($chapter);
+        } else {
+            return response()->json(['error' => 'Chapter not found'], 404);
+        }
     }
 }

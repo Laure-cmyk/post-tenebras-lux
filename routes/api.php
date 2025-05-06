@@ -15,11 +15,25 @@ Route::prefix('api/v1/')->group(function () {
       Route::delete('/stories', [StoryApiController::class, 'destroy']);
       Route::post('/stories', [StoryApiController::class, 'store']);
 
-    // Route::apiResource handles the resourceful routes for the controller
-    // By adding apiResource, you automatically get the standard RESTful routes
-    // Using the . allows to define parent-child relationships
-    Route::apiResource('stories.chapters', ChapterApiController::class);
-    Route::apiResource('chapters.choices', ChoiceApiController::class);
+    Route::prefix('stories/{story}')->group(function () {
+        Route::get('/chapters', [ChapterApiController::class, 'index']);
+        Route::get('/chapters/{id}', [ChapterApiController::class, 'show']);
+        Route::put('/chapters', [ChapterApiController::class, 'update']);
+        Route::delete('/chapters', [ChapterApiController::class, 'destroy']);
+        Route::post('/chapters', [ChapterApiController::class, 'store']);
+    });
+
+    Route::prefix('chapters/{chapter}')->group(function () {
+        Route::get('/choices', [ChoiceApiController::class, 'getChoices']);
+        Route::get('/choices/{id}', [ChoiceApiController::class, 'show']);
+        Route::put('/choices', [ChoiceApiController::class, 'update']);
+        Route::delete('/choices', [ChoiceApiController::class, 'destroy']);
+        Route::post('/choices', [ChoiceApiController::class, 'store']);
+    });
+
+    
+/*     Route::apiResource('stories.chapters', ChapterApiController::class);
+    Route::apiResource('chapters.choices', ChoiceApiController::class); */
 
     // If fail, change chapters & choices routes to prefix + group 
 
