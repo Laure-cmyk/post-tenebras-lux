@@ -15,7 +15,15 @@ return new class extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('choice_content');
-            $table->foreignId('chapter_id')->references('chapters')
+            $table->foreignId('chapter_id')
+            ->references('id')
+            ->on('chapters')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
+            $table->foreignId('next_chapter_id')
+            ->nullable()
+            ->references('id')
+            ->on('chapters')
             ->onDelete('restrict')
             ->onUpdate('restrict');
         });

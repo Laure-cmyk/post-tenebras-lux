@@ -18,12 +18,12 @@ class ChoicesSeeder extends Seeder
         // Example:
         
         Choice::create([
-            'choice_text' => 'Go left',
+            'choice_content' => 'Go left',
             'chapter_id' => 1,
         ]);
 
         Choice::create([
-            'choice_text' => 'Go right',
+            'choice_content' => 'Go right',
             'chapter_id' => 1,
         ]);
         
