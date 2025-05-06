@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="app-container">
     <main>
       <PageLanding />
     </main>
@@ -14,5 +14,15 @@
 </template>
 
 <style scoped>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 </style>
