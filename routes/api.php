@@ -9,14 +9,19 @@ use App\Http\Controllers\ChoiceApiController;
 // Route::group handles the grouping of routes
 
 Route::prefix('api/v1/')->group(function () {
-  Route::get('/story', [StoryApiController::class, 'show']);
-    Route::put('/story', [StoryApiController::class, 'update']);
-    Route::delete('/story', [StoryApiController::class, 'destroy']);
-    Route::post('/story', [StoryApiController::class, 'store']);
+    Route::get('/stories', [StoryApiController::class, 'show']);
+    Route::get('/stories/{id}', [StoryApiController::class, 'getStory']);
+      Route::put('/stories', [StoryApiController::class, 'update']);
+      Route::delete('/stories', [StoryApiController::class, 'destroy']);
+      Route::post('/stories', [StoryApiController::class, 'store']);
 
     // Route::apiResource handles the resourceful routes for the controller
     // By adding apiResource, you automatically get the standard RESTful routes
     // Using the . allows to define parent-child relationships
-    Route::apiResource('story.chapters', ChapterApiController::class);
+    Route::apiResource('stories.chapters', ChapterApiController::class);
     Route::apiResource('chapters.choices', ChoiceApiController::class);
+
+    // If fail, change chapters & choices routes to prefix + group 
+
+
 });
