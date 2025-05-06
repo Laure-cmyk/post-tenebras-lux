@@ -20,7 +20,13 @@ class ChaptersSeeder extends Seeder
             'title' => 'Chapter 1: Awakening',
             'chapter_number' => 1,
             'chapter_content' => 'In the beginning, there was darkness...',
-            'image_path' => 'path/to/image.jpg',
+            'story_id' => $story->id,
+        ]);
+
+        Chapter::create([
+            'title' => 'Chapter 2: The Journey Begins',
+            'chapter_number' => 2,
+            'chapter_content' => 'The sun rose over the horizon...',
             'story_id' => $story->id,
         ]);
     }
