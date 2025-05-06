@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             StoriesSeeder::class,
-        /*     ChaptersSeeder::class,
-            ChoicesSeeder::class, */
+            ChaptersSeeder::class,
+            ChoicesSeeder::class,
         ]);
 
        /*  User::factory()->create([

@@ -20,6 +20,7 @@ class ChoicesSeeder extends Seeder
         Choice::create([
             'choice_content' => 'Go left',
             'chapter_id' => 1,
+            'next_chapter_id' => 2,
         ]);
 
         Choice::create([
