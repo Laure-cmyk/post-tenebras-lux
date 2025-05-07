@@ -2,6 +2,9 @@
 import { onMounted } from "vue";
 import { useQuasar } from "quasar";
 import { useJsonStorage } from "@/composables/useJsonStorage";
+import { useFetchJson } from "@/composables/useFetchJson";
+
+const { data: stories, loading: storyLoading, error: storyError } = useFetchJson("stories");
 
 const $q = useQuasar();
 const { data: isDark } = useJsonStorage("isDark", null);
@@ -28,7 +31,9 @@ onMounted(() => {
             aria-label="Toggle Dark Mode"
             @click="toggleDarkMode"
         />
-        <p>Written, photoshoped and coded by Laure Mangold</p>
+        <p v-if="storyError">Error loading author information</p>
+        <p v-else-if="storyLoading">{{ storyLoading }}</p>
+        <p v-else>Written, photoshoped and coded by {{ stories[0].author_name}}</p>
         <p>This game was made for a course at the HEIG-VD</p>
     </footer>
 </template>

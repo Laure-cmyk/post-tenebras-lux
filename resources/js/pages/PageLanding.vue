@@ -3,10 +3,11 @@ import { ref } from "vue";
 import { useFetchJson } from "@/composables/useFetchJson";
 import { anchor } from "../../stores/routes";
 
+
 const handleClick = () => {
-    anchor.value = 'story';
-    window.location.hash = 'story';
-};
+anchor.value = 'story';
+window.location.hash = 'story';
+}
 
 const { data: stories, loading: storyLoading, error: storyError } = useFetchJson("stories");
 </script>

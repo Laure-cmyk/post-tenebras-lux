@@ -32,8 +32,7 @@ const $q = useQuasar();
       <div class="content-inner q-pa-lg">
         <h2 class="text-h3 q-mb-md">{{ chapter.title }}</h2>
         <p class="text-body1 q-mb-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.
+          {{ chapter.chapter_content }}
         </p>
         <div class="choices-container">
           <q-btn
