@@ -10,8 +10,7 @@ class ChapterApiController extends Controller
     public function show($id)
     {
         return response()->json(Chapter::all()); 
-        // implement use
-/*         return response()->json(Chapter::with('choices')->find($id)); */
+
     }
    
 
@@ -20,7 +19,6 @@ class ChapterApiController extends Controller
         $chapter = Chapter::find($id);
         if ($chapter) {
             return response()->json(Chapter::with('choices')->find($id));
-           /*  return response()->json($chapter); */
         } else {
             return response()->json(['error' => 'Chapter not found'], 404);
         }
